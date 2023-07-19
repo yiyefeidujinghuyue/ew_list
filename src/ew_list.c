@@ -22,7 +22,7 @@ void ew_list_destroy(ew_list *self)
     if (!self) {
         return ;
     }
-    ew_list_foreach(it, &self->head) {
+    ew_list_foreach(it, self) {
         if (self->data_eraser) {
             self->data_eraser(it->data);
         }
@@ -36,7 +36,7 @@ void ew_list_clear(ew_list *self)
     if (!self) {
         return ;
     }
-    ew_list_foreach(it, &self->head) {
+    ew_list_foreach(it, self) {
         ew_lnode_delete(it);
         if (self->data_eraser) {
             self->data_eraser(it->data);
@@ -63,7 +63,7 @@ bool ew_list_is_node_exist(ew_list *self, ew_lnode *node)
     if (node == &self->head) {
         return true;
     }
-    ew_list_foreach(it, &self->head) {
+    ew_list_foreach(it, self) {
         if (it == node) {
             return true;
         }

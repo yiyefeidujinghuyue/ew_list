@@ -17,8 +17,8 @@ typedef struct ew_list {
 } ew_list;
 
 
-#define ew_list_foreach(it, head)   \
-    for (ew_lnode *it = (head)->next, *n = it->next; it != (head); it = n, n = n->next)
+#define ew_list_foreach(it, list)   \
+    for (ew_lnode *it = (list)->head.next, *n = it->next; it != &((list)->head); it = n, n = n->next)
 
 
 ew_list *ew_list_create(void);
